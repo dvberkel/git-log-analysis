@@ -15,19 +15,21 @@ my $DEFAULT = "default";
 sub analyse {
     my %analysis = ();
     while(my $line = <>) {
+	my $key = $DEFAULT;
 	if ($line =~ m/\[([^\]]+)\]/) {
-	    if (! exists $analysis{$1}) {
-		$analysis{$1} = 0;
-	    }
-	    $analysis{$1}++;
-	} else {
-	    if (! exists $analysis{$DEFAULT} ) {
-		$analysis{$DEFAULT} = 0;
-	    }
-	    $analysis{$DEFAULT}++;
+	    $key = $1;
 	}
+	increment(\%analysis, $key);
     }
     return %analysis;
+}
+
+sub increment {
+    my ($analysis, $key) = @_;
+    if (! exists $analysis->{$key}) {
+	$analysis->{$key} = 0;
+    }
+    $analysis->{$key}++;
 }
 
 sub report {
