@@ -37,7 +37,7 @@ sub increment {
 sub report {
     my $analysis = shift @_;
     my $maximum = max map {length($_)} (keys %$analysis);
-    for my $key (keys %$analysis) {
+    for my $key (sort keys %$analysis) {
 	my $padding = padding(length($key), $maximum);
 	my $value = $analysis->{$key};
 	print "$key$padding$value\n";
