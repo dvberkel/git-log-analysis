@@ -37,8 +37,13 @@ sub report {
     my $analysis = shift @_;
     my $maximum = max map {length($_)} (keys %$analysis);
     for my $key (keys %$analysis) {
-	my $padding = "." x (5 + $maximum - length($key));
+	my $padding = padding(length($key), $maximum);
 	my $value = $analysis->{$key};
 	print "$key$padding$value\n";
     }
+}
+
+sub padding {
+    my ($length, $maximum) = @_;
+    return "." x (5 + $maximum - $length);
 }
