@@ -2,6 +2,7 @@ package Analysis::Util;
 
 use strict;
 use warnings;
+use List::Util qw/min max/;
 
 require Exporter;
 
@@ -34,8 +35,10 @@ sub increment {
 
 sub report {
     my $analysis = shift @_;
+    my $maximum = max map {length($_)} (keys %$analysis);
     for my $key (keys %$analysis) {
+	my $padding = "." x (5 + $maximum - length($key));
 	my $value = $analysis->{$key};
-	print "$key : $value\n";
+	print "$key$padding$value\n";
     }
 }
