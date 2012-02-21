@@ -25,9 +25,9 @@ a certain keyword is present in the a commit.
 
 For example
 
-    default    37
-    [REFACTOR] 51
-    [FIX]      5
+    FIX...............5
+    REFACTOR..........51
+    total commits.....37
 
 Usage
 -----
