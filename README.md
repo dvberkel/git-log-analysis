@@ -36,7 +36,7 @@ You can you this tool in the following manner
 
     > git log | ./analyse.pl
 
-This produces the following output on commit b7ef2ba
+This produces the following output on commit b7ef2baf8155a5727cf9d09c838929e2cf5c668d
 
     FIX...............1
     REFACTOR..........3
