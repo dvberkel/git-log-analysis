@@ -28,3 +28,16 @@ For example
     default    37
     [REFACTOR] 51
     [FIX]      5
+
+Usage
+-----
+
+You can you this tool in the following manner
+
+    > git log | ./analyse.pl
+
+This produces the following output on commit b7ef2ba
+
+    FIX...............1
+    REFACTOR..........3
+    total commits.....9
