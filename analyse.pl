@@ -8,5 +8,5 @@ use lib "$Bin";
 
 use Analysis::Util qw/analyse report/;
 
-my %analysis = analyse();
+my %analysis = analyse(*STDIN);
 report(\%analysis)

@@ -14,6 +14,7 @@ our @EXPORT_OK = qw/analyse report/;
 my $DEFAULT = "total commits";
 
 sub analyse {
+    my ($FH) = @_;
     my %analysis = ();
     while(my $line = <>) {
 	if ($line =~ m/\[([^\]]+)\]/) {
