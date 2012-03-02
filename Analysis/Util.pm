@@ -16,7 +16,7 @@ my $DEFAULT = "total commits";
 sub analyse {
     my ($FH) = @_;
     my %analysis = ();
-    while(my $line = <>) {
+    while(my $line = <$FH>) {
 	if ($line =~ m/\[([^\]]+)\]/) {
 	    increment(\%analysis, $1);
 	}
