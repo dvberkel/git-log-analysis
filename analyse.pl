@@ -9,4 +9,4 @@ use lib "$Bin";
 use Analysis::Util qw/analyse report/;
 
 my %analysis = analyse(*STDIN);
-report(\%analysis)
+print report(\%analysis)
