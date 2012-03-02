@@ -47,8 +47,11 @@ sub childProcess {
     my ($pid, $directory, $READER, $WRITER) = @_;
     die "can not fork: $!\n" unless defined $pid;
     close $READER;
-    print $WRITER "Sending: $directory\n";
-    print $WRITER "Finished sending\n";
+    chdir $directory;
+    open(GITLOG, "git log |");
+    my %analysis = analyse(*GITLOG);
+    print $WRITER report(\%analysis);
+    close(GITLOG);
     close $WRITER;
     exit(0);	    
 }
