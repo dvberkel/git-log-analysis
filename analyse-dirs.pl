@@ -26,21 +26,23 @@ sub process {
     pipe(READER, WRITER);
     WRITER->autoflush(1);
     if (my $pid = fork) {
-	parentProcess($pid, *READER, *WRITER);
+	parentProcess($pid, $directory, *READER, *WRITER);
     } else {
 	childProcess($pid, $directory, *READER, *WRITER);
     }
 }
 
 sub parentProcess {
-    my ($pid, $READER, $WRITER) = @_;
+    my ($pid, $directory, $READER, $WRITER) = @_;
     close $WRITER;
+    print "$directory\n";
+    print "=" x length($directory), "\n";
     while (my $line = <$READER>) {
 	print $line;
     }
     close $READER;
+    print "\n";
     waitpid($pid, 0);
-
 }
 
 sub childProcess {
