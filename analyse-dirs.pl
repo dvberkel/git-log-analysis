@@ -11,6 +11,11 @@ use IO::Handle;
 use Analysis::Util qw/analyse report/;
 
 foreach my $directory (@ARGV) {
+    analyseDir($directory);
+}
+
+sub analyseDir {
+    my ($directory) = @_;
     if (usesGit($directory)) {
 	process($directory)
     }
